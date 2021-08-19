@@ -25,6 +25,7 @@ export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
     handlePress = (e: any) => {
         const {keyValue, codeValue, withInputs} = this.props;
 
+        // console.log(e.key, keyValue);
         if (keyValue && e.key !== keyValue) {
             return;
         }

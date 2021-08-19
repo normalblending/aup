@@ -47,5 +47,11 @@
 }
 
 .oscParamForm input {
-    width: 74px;
+    width: 86px;
+    box-sizing: border-box;
+}
+
+.oscParamForm select {
+    width: 86px;
+    box-sizing: border-box;
 }

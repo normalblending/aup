@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useCallback, useRef} from "react";
+import {useCallback, useRef, useState} from "react";
 import {KeyTrigger} from "../../components/KeyboardJS/KeyboardJSTrigger";
 
 export interface OscParamFormProps {
@@ -24,27 +24,52 @@ const KEY_CODE_MAP = [
 export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
 
     const {onApply, index, parentIndex} = props;
+    const typeInput = useRef<HTMLSelectElement>(null);
     const valueInput = useRef<HTMLInputElement>(null);
-    const paramNameInput = useRef<HTMLInputElement>(null);
+    const paramNameInput = useRef<HTMLSelectElement>(null);
+
+    const [param, setParam] = useState('frequency');
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
-        console.log('submit')
-        const name = paramNameInput.current?.value as string;
-        const value = valueInput.current?.value;
-        onApply(name, value)
-    }, [paramNameInput, valueInput, onApply]);
+        if (param === 'type') {
+            const name = paramNameInput.current?.value as string;
+            const value = typeInput.current?.value;
+            onApply(name, value)
+        } else {
+            const name = paramNameInput.current?.value as string;
+            const value = valueInput.current?.value;
+            onApply(name, value)
+        }
+    }, [paramNameInput, valueInput, onApply, param]);
 
-    const key = KEY_CODE_MAP[parentIndex]?.[index];
+    const code = KEY_CODE_MAP[parentIndex]?.[index % 3];
+    const key = index < 3 ? KEY_CODE_MAP[parentIndex]?.[index] : KEY_CODE_MAP[parentIndex]?.[index - 3]?.toUpperCase();
+
+    const handleParamChange = useCallback((e) => {
+        setParam(e.target.value);
+    }, []);
     return (
         <form onSubmit={handleSubmit} className={'oscParamForm'}>
-
-            {index <= 2 && (
-                <KeyTrigger codeValue={key} onPress={handleSubmit}/>
+            {index <= 5 && (
+                <KeyTrigger codeValue={code} keyValue={key} onPress={handleSubmit}/>
             )}
-            <button type='submit'>_{key ? <small>({key})</small> : ''}</button>
-            <input ref={paramNameInput} placeholder={'parameter'}/>
-            <input ref={valueInput} placeholder={'value'}/>
+            <button type='submit' title={'apply'}>_{key ? <small>({key})</small> : ''}</button>
+            <select title={'parameter name'} ref={paramNameInput} value={param} onChange={handleParamChange}>
+                <option value={'frequency'}>frequency</option>
+                <option value={'type'}>type</option>
+            </select>
+            {param === 'type' && (
+                <select ref={typeInput} title={'wave type'} >
+                    <option value={'square'}>square</option>
+                    <option value={'sine'}>sine</option>
+                    <option value={'triangle'}>triangle</option>
+                    <option value={'sawtooth'}>sawtooth</option>
+                </select>
+            )}
+            {param === 'frequency' && (
+                <input ref={valueInput} title={'value'} placeholder={'value'}/>
+            )}
         </form>
     );
 };
