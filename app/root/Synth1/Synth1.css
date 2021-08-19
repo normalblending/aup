@@ -1,0 +1,51 @@
+.synth1Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.synth1Container button {
+    width: 48px;
+    text-align: left;
+}
+
+.synth1Container .oscillators {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2px;
+}
+
+.synth1Container .addOscButtonContainer {
+    margin: 1px;
+}
+
+.synth1Container .addOscButtonContainer .addOscButton {
+
+}
+
+.oscItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1px;
+    background: radial-gradient(#ffa6a6, transparent);
+}
+
+.oscItem .oscStartButton {
+
+}
+
+.oscItem .oscStopButton {
+
+}
+
+.oscItem .oscAddParamButton {
+
+}
+
+.oscParamForm {
+    display: flex;
+}
+
+.oscParamForm input {
+    width: 74px;
+}
