@@ -22,17 +22,11 @@ export const Synth1: React.FC<Synth1Props> = (props) => {
         setOscs([...oscs, {}]);
     }, [oscs]);
 
-
-    const handleConnect = React.useCallback((number, signal: Tone.Signal) => {
-        console.log(oscsRefs.current);
-        oscsRefs.current[number]?.current?.connect(signal);
-    }, [oscsRefs]);
-
     return (
         <div className='synth1Container'>
             <div className={'oscillators'}>
                 {oscs.map((_, index) => {
-                    return <Osc ref={oscsRefs.current[index]} key={index} index={index} onConnectRequest={handleConnect}/>
+                    return <Osc ref={oscsRefs.current[index]} key={index} index={index}/>
                 })}
                 <div className={`addOscButtonContainer`}>
                     <button

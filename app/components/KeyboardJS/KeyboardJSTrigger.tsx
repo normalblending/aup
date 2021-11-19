@@ -3,7 +3,9 @@ import * as keyboardjs from "keyboardjs";
 
 export interface UserHotkeyTriggerProps {
     keyValue?: string
+
     codeValue?: string
+    withShift?: boolean
 
     onPress?: (e?: any, name?: any, key?: string, code?: string) => void
 
@@ -23,10 +25,12 @@ export enum NodeType {
 export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
 
     handlePress = (e: any) => {
-        const {keyValue, codeValue, withInputs} = this.props;
+        const {keyValue, codeValue, withShift, withInputs} = this.props;
 
-        // console.log(e.key, keyValue);
         if (keyValue && e.key !== keyValue) {
+            return;
+        }
+        if (withShift && !e.shiftKey) {
             return;
         }
         if (document.activeElement?.nodeName === NodeType.Input && !withInputs) {
@@ -39,9 +43,12 @@ export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
     };
 
     handleRelease = (e: any) => {
-        const {keyValue, codeValue, withInputs} = this.props;
+        const {keyValue, codeValue, withShift, withInputs} = this.props;
 
         if (keyValue && e.key !== keyValue) {
+            return;
+        }
+        if (withShift && !e.shiftKey) {
             return;
         }
         if (document.activeElement?.nodeName === NodeType.Input && !withInputs) {

@@ -6,6 +6,7 @@ export interface OscParamFormProps {
     parentIndex: number
     index: number
     onApply: (name: string, value: any) => void
+    onRemove: (index: number) => void
 }
 
 const KEY_CODE_MAP = [
@@ -23,7 +24,7 @@ const KEY_CODE_MAP = [
 
 export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
 
-    const {onApply, index, parentIndex} = props;
+    const {onApply, index, parentIndex, onRemove} = props;
     const typeInput = useRef<HTMLSelectElement>(null);
     const valueInput = useRef<HTMLInputElement>(null);
     const paramNameInput = useRef<HTMLSelectElement>(null);
@@ -49,6 +50,13 @@ export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
     const handleParamChange = useCallback((e) => {
         setParam(e.target.value);
     }, []);
+
+    const handleValueKeyDown = useCallback((e) => {
+        if (e.key === 'Backspace' && e.shiftKey)
+            onRemove(index);
+        if (e.key === 'Escape')
+            e.target.blur();
+    }, [onRemove, index]);
     return (
         <form onSubmit={handleSubmit} className={'oscParamForm'}>
             {index <= 5 && (
@@ -60,7 +68,7 @@ export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
                 <option value={'type'}>type</option>
             </select>
             {param === 'type' && (
-                <select ref={typeInput} title={'wave type'} >
+                <select ref={typeInput} title={'wave type'} onKeyDown={handleValueKeyDown} >
                     <option value={'square'}>square</option>
                     <option value={'sine'}>sine</option>
                     <option value={'triangle'}>triangle</option>
@@ -68,7 +76,7 @@ export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
                 </select>
             )}
             {param === 'frequency' && (
-                <input ref={valueInput} title={'value'} placeholder={'value'}/>
+                <input ref={valueInput} type={'number'} min={0} step={1} onKeyDown={handleValueKeyDown} title={'value'} placeholder={'value'}/>
             )}
         </form>
     );

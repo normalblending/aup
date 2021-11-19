@@ -30,6 +30,18 @@
     background: radial-gradient(#ffa6a6, transparent);
 }
 
+.oscItem .oscItem-topRow {
+    display: flex;
+}
+.oscItem .oscItem-bottomRow {
+    display: flex;
+}
+
+.oscItem .oscHoldButton {
+    width: 86px;
+    padding-left: 3px;
+}
+
 .oscItem .oscStartButton {
 
 }
@@ -53,5 +65,14 @@
 
 .oscParamForm select {
     width: 86px;
+    box-sizing: border-box;
+}
+
+.envForm {
+    display: flex;
+}
+
+.envForm input {
+    width: 43px;
     box-sizing: border-box;
 }
