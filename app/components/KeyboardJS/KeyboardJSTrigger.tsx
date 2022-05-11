@@ -17,16 +17,19 @@ export interface UserHotkeyTriggerProps {
 
     withInputs?: boolean
 }
+
 export enum NodeType {
-    Input= 'INPUT'
+    Input = 'INPUT'
 }
 
 
 export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
 
     handlePress = (e: any) => {
+        e.preventRepeat();
         const {keyValue, codeValue, withShift, withInputs} = this.props;
 
+        // console.log(e, keyValue, codeValue);
         if (keyValue && e.key !== keyValue) {
             return;
         }
@@ -37,7 +40,6 @@ export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
             return;
         }
 
-        e.preventRepeat();
         const {onPress, name} = this.props;
         onPress && onPress(e, name, keyValue, codeValue);
     };
@@ -62,9 +64,9 @@ export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
     componentDidMount() {
         const {codeValue} = this.props;
 
-        if (codeValue) {
-            keyboardjs.bind(codeValue, this.handlePress, this.handleRelease)
-        }
+
+        keyboardjs.bind(codeValue || '', this.handlePress, this.handleRelease)
+
     }
 
     componentDidUpdate(prevProps: UserHotkeyTriggerProps) {
@@ -72,13 +74,13 @@ export class KeyTrigger extends React.PureComponent<UserHotkeyTriggerProps> {
         const prevCode = prevProps.codeValue;
 
         if (prevCode !== codeValue) {
-            if (prevCode) {
-                keyboardjs.unbind(prevCode, this.handlePress, this.handleRelease);
-            }
+            // if (prevCode) {
+                keyboardjs.unbind(prevCode  || '', this.handlePress, this.handleRelease);
+            // }
 
-            if (codeValue) {
-                keyboardjs.bind(codeValue, this.handlePress, this.handleRelease);
-            }
+            // if (codeValue) {
+                keyboardjs.bind(codeValue  || '', this.handlePress, this.handleRelease);
+            // }
         }
     }
 

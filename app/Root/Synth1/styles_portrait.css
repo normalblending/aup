@@ -1,0 +1,126 @@
+
+@media screen and (orientation: portrait) {
+
+    .synth1Container .oscillators {
+        flex-direction: column;
+        font-size: 3vh;
+    }
+
+    .synth1Container button {
+
+        width: 20vw;
+        flex: auto;
+        height: 7vh;
+        font-size: inherit;
+    }
+
+
+    .oscItem {
+        width: 100%;
+        font-size: inherit;
+        position: relative;
+    }
+
+    .oscItem {
+        width: 100%;
+        font-size: inherit;
+        position: relative;
+    }
+
+    .oscItem .oscItem-topRow {
+        width: 100%;
+    }
+    .oscItem .oscItem-topRow button {
+        max-width: 17vw;
+        flex: 0 0 auto;
+    }
+
+    .oscItem .oscStartButton {
+
+        flex: auto;
+        font-size: inherit;
+    }
+
+    .oscItem .oscAddParamButton {
+        height: 5vh;
+        font-size: inherit;
+
+    }
+
+    .oscItem .oscStopButton {
+
+        flex: auto;
+        font-size: inherit;
+    }
+
+    .oscParamForm {
+        width: 100%;
+        font-size: inherit;
+    }
+
+
+    .oscParamForm button {
+        flex: 0 0 auto;
+        font-size: inherit;
+    }
+
+    .oscParamForm input {
+        width: 40vw;
+        height: 7vh;
+        font-size: inherit;
+    }
+
+
+    .oscParamForm select {
+        width: 40vw;
+        height: 7vh;
+        font-size: inherit;
+    }
+
+    .freqInputContainer {
+        display: flex;
+    }
+
+    .freqInputContainer input {
+        width: 50%;
+    }
+
+    .freqInputContainer select {
+        width: 40vw;
+    }
+
+
+    .freqInputContainer.freqInputContainer_const select {
+        display: block;
+        position: relative;
+        left: 0;
+        width: 50%;
+    }
+
+    .oscItem .changes {
+        max-width: 100%;
+    }
+
+    .oscItem-bottomRow {
+        justify-content: flex-end;
+
+        width: 100%;
+
+
+    }
+    .oscItem-bottomRow button {
+        max-width: 20vw;
+
+    }
+
+    .synth1Container .addOscButtonContainer {
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        padding-right: 0;
+        padding-bottom: 90vh;
+    }
+    .synth1Container .addOscButtonContainer button {
+        max-width: 20vw;
+    }
+}

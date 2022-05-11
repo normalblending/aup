@@ -1,26 +1,3 @@
-.synth1Container {
-    display: flex;
-    flex-direction: column;
-}
-
-.synth1Container button {
-    width: 48px;
-    text-align: left;
-}
-
-.synth1Container .oscillators {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 2px;
-}
-
-.synth1Container .addOscButtonContainer {
-    margin: 1px;
-}
-
-.synth1Container .addOscButtonContainer .addOscButton {
-
-}
 
 .oscItem {
     display: flex;
@@ -28,11 +5,23 @@
     align-items: flex-start;
     margin: 1px;
     background: radial-gradient(#ffa6a6, transparent);
+    /*width: 288px;*/
 }
 
 .oscItem .oscItem-topRow {
     display: flex;
+    align-items: flex-end;
 }
+
+.oscItem .changes {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 1px 4px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+}
+
 .oscItem .oscItem-bottomRow {
     display: flex;
 }
@@ -59,12 +48,12 @@
 }
 
 .oscParamForm input {
-    width: 86px;
+    width: 90px;
     box-sizing: border-box;
 }
 
 .oscParamForm select {
-    width: 86px;
+    width: 90px;
     box-sizing: border-box;
 }
 
@@ -76,3 +65,4 @@
     width: 43px;
     box-sizing: border-box;
 }
+

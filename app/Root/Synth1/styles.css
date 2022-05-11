@@ -1,0 +1,27 @@
+
+.synth1Container {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 9px;
+}
+
+.synth1Container button {
+    width: 48px;
+    text-align: left;
+    flex: 1 0 auto;
+    white-space: nowrap;
+}
+
+.synth1Container .oscillators {
+    display: flex;
+    align-items: flex-start;
+}
+
+.synth1Container .addOscButtonContainer {
+    margin: 1px;
+    padding-right: 90vw;
+}
+
+.synth1Container .addOscButtonContainer .addOscButton {
+
+}
