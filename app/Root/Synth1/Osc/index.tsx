@@ -36,14 +36,7 @@ export const Osc = forwardRef<OscImperativeHandlers, OscProps>(({id, index, xOff
     useEffect(() => {
         setItemIndex?.(id, index);
     }, [id, index]);
-    // useEffect(() => {
-    //     const tick = () => {
-    //         // console.log(getBody?.()?.items[1]?.freqConnectADSR?.value, getBody?.()?.items[0]?._ADSR.value)
-    //
-    //         requestAnimationFrame(tick);
-    //     };
-    //     tick();
-    // }, []);
+
     const handleStart = React.useCallback(async () => {
         setItemPlay(id)
     }, [setItemPlay, id]);
@@ -82,24 +75,7 @@ export const Osc = forwardRef<OscImperativeHandlers, OscProps>(({id, index, xOff
                 : (index - xOffset + 1).toString()
         )
         : null;
-    //
-    // const [stateVisible, setStateVisible] = useState<boolean>(false);
-    // const tableRef = useRef<HTMLTableElement>(null);
-    //
-    // const handleOpenState = useCallback((e) => {
-    //
-    //     setStateVisible(true)
-    //     e.target.addEventListener('mousemove', (e: MouseEvent) => {
-    //         if (tableRef.current) {
-    //             tableRef.current.style.left = e.x + 'px';
-    //             tableRef.current.style.top = e.y + 'px';
-    //         }
-    //     });
-    //
-    // }, []);
-    // const handleCloseState = useCallback(() => {
-    //     setStateVisible(false);
-    // }, []);
+
     return (
         <div className={'oscItem'}>
             <div className={'oscItem-topRow'}>
@@ -147,7 +123,6 @@ export const Osc = forwardRef<OscImperativeHandlers, OscProps>(({id, index, xOff
             </div>
             {key && (
                 <>
-                    {/*{index === 9 ? '0' : (index + 1).toString()}*/}
                     <KeyTrigger
                         codeValue={key}
                         withShift

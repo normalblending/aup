@@ -16,15 +16,18 @@ export const Root: React.FC<RootProps> = (props) => {
                 <div
                     className={'infoButton'}
                     onClick={() => {
-                        alert('AUP v2.0.1 (polyphonic synthesizer)\n' +
+                        alert('AUP v2.0.2 (polyphonic synthesizer)\n' +
                             'by Normalblending, 2022\n' +
                             '\n' +
                             '\n' +
                             '\n' +
                             '\n' +
-                            '***');
+                            '***\n' +
+                            'use arrows to change keyboard offset\n' +
+                            'shift+[n] to latch oscillator\'s envelope');
                     }}
-                >i</div>
+                >i
+                </div>
 
             </SynthContextProvider>
         </div>

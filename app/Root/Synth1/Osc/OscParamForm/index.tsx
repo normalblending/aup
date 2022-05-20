@@ -115,7 +115,7 @@ export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
             <select title={'parameter name'} ref={paramNameInput} value={param} onChange={handleParamChange}>
                 {Object.values(Parameter).map(p => {
                     return (
-                        <option value={p}>{p}</option>
+                        <option key={p} value={p}>{p}</option>
                     )
                 })}
             </select>
@@ -145,17 +145,20 @@ export const OscParamForm: React.FC<OscParamFormProps> = (props) => {
                         />
                     )}
                     <select
-                        ref={typeInput} value={frequencySignalType} title={'modulation'}
+                        ref={typeInput}
+                        value={frequencySignalType}
+                        title={'modulation'}
                         onChange={handleFrequencySignalTypeChange}
                     >
                         <option value={'const'}>const</option>
-                        {Object.values(synthState).map((item, index) => {
-                            return <>
-                                {index !== parentIndex ?
-                                    <option value={item.id + ' ' + ModuleType.lfo}>{index + 1} lfo</option> : null}
-                                {<option value={item.id + ' ' + ModuleType.adsr}>{index + 1} adsr</option>}
-                            </>
-                        })}
+                        {Object.values(synthState).map((item, index) => (
+                            <React.Fragment key={index}>
+                                {index !== parentIndex ? (
+                                    <option value={item.id + ' ' + ModuleType.lfo}>{index + 1} lfo</option>
+                                ) : null}
+                                <option value={item.id + ' ' + ModuleType.adsr}>{index + 1} adsr</option>
+                            </React.Fragment>
+                        ))}
                     </select>
                 </div>
             )}
