@@ -1,9 +1,6 @@
 # AUP v2.0.1
 polyphonic synthesizer
 
-`
-npm i`
+`npm i`
 </br>
-`
-npm start
-`
+`npm start`
